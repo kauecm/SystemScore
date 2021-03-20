@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.TelaPrincipalController">
+   <children>
+      <Button layoutX="334.0" layoutY="561.0" mnemonicParsing="false" onAction="#onBtSairAction" text="SAIR" />
+      <Button layoutX="14.0" layoutY="217.0" mnemonicParsing="false" onAction="#onBtTelaCadastro" text="Cadastrar Cliente" />
+      <Button layoutX="14.0" layoutY="268.0" mnemonicParsing="false" text="Cliente" />
+      <Label fx:id="lblMensagem" layoutX="200.0" layoutY="330.0" />
+   </children>
+</AnchorPane>
