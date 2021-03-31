@@ -4,32 +4,39 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 public class TelaPrincipal extends Application {
-	private static Stage stage;
-	
+
+	private static Scene mainScene;
+
 	@Override
 	public void start(Stage stage) {
 		try {
-			Parent parent = FXMLLoader.load(getClass().getResource("/gui/TelaPrincipal.fxml"));
-			Scene scene = new Scene(parent);
-			stage.setScene(scene);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/TelaPrincipal.fxml"));
+			ScrollPane scrollPane = loader.load();
+
+			scrollPane.setFitToHeight(true);
+			scrollPane.setFitToWidth(true);
+
+			mainScene = new Scene(scrollPane);
+			stage.setScene(mainScene);
+			stage.setTitle("System Score");
 			stage.show();
-			setStage(stage);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public static Stage getStage() {
-		return stage;
+
+	public static Scene getMainScene() {
+		return mainScene;
 	}
-	
-	public void setStage(Stage stage) {
-		this.stage = stage;
+
+	public static void setMainScene(Scene mainScene) {
+		TelaPrincipal.mainScene = mainScene;
 	}
 
 	public static void main(String[] args) {

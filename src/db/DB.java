@@ -6,54 +6,50 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Properties;
 import java.sql.Statement;
-
+import java.util.Properties;
 
 public class DB {
-	
+
 	private static Connection conn = null;
-	
-	
+
 	public static Connection getConnection() {
-		if(conn==null) {
+		if (conn == null) {
 			try {
-			Properties props = loadProperties();
-			String url = props.getProperty("dburl");
-			conn = DriverManager.getConnection(url, props);
-			}
-			catch(SQLException e) {
+				Properties props = loadProperties();
+				String url = props.getProperty("dburl");
+				conn = DriverManager.getConnection(url, props);
+			} catch (SQLException e) {
 				throw new DbException(e.getMessage());
 			}
 		}
 		return conn;
 	}
-	
+
 	public static void closeConnection() {
-		if(conn!=null) {
+		if (conn != null) {
 			try {
-			conn.close();
-			}catch(SQLException e) {
+				conn.close();
+			} catch (SQLException e) {
 				throw new DbException(e.getMessage());
 			}
-			}
+		}
 	}
-	
-	// metodo para carregar as propriedades que estão definidas no db.properties 
-	
+
+	// metodo para carregar as propriedades que estão definidas no db.properties
+
 	private static Properties loadProperties() {
-		try(FileInputStream fs = new FileInputStream("db.properties")){
+		try (FileInputStream fs = new FileInputStream("db.properties")) {
 			Properties props = new Properties();
 			props.load(fs);
 			return props;
-		}
-		catch(IOException e) {
+		} catch (IOException e) {
 			throw new DbException(e.getMessage());
 		}
 	}
-	
+
 	public static void closeStatement(Statement st) {
-		if(st == null) {
+		if (st == null) {
 			try {
 				st.close();
 			} catch (SQLException e) {
@@ -61,8 +57,9 @@ public class DB {
 			}
 		}
 	}
+
 	public static void closeResultSet(ResultSet rs) {
-		if(rs == null) {
+		if (rs == null) {
 			try {
 				rs.close();
 			} catch (SQLException e) {
@@ -70,11 +67,5 @@ public class DB {
 			}
 		}
 	}
-	
-	
-		
-	
-	
-	
-	
+
 }

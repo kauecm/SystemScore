@@ -1,6 +1,6 @@
 package gui;
 
-import Utils.Alertas;
+import Util.Alertas;
 import application.Login;
 import application.TelaPrincipal;
 import javafx.fxml.FXML;
